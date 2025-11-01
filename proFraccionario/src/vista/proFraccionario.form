@@ -118,12 +118,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="numerador" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jtf1Num1" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jtFNum1" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="denominador" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jtf2Den2" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jtFDen1" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -137,12 +137,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="numerador" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtf1Num1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtFNum1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="denominador" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtf2Den2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtFDen1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -155,14 +155,14 @@
                 <Property name="text" type="java.lang.String" value="Numerador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtf1Num1">
+            <Component class="javax.swing.JTextField" name="jtFNum1">
             </Component>
             <Component class="javax.swing.JLabel" name="denominador">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Denominador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtf2Den2">
+            <Component class="javax.swing.JTextField" name="jtFDen1">
             </Component>
           </SubComponents>
         </Container>
@@ -184,12 +184,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="numerador2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jtf3Num2" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jtFNum2" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="denominador2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
-                              <Component id="jtf4Den2" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jtFDen2" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -202,12 +202,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="numerador2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtf3Num2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtFNum2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="denominador2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtf4Den2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtFDen2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -225,9 +225,9 @@
                 <Property name="text" type="java.lang.String" value="Denominador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtf3Num2">
+            <Component class="javax.swing.JTextField" name="jtFNum2">
             </Component>
-            <Component class="javax.swing.JTextField" name="jtf4Den2">
+            <Component class="javax.swing.JTextField" name="jtFDen2">
             </Component>
           </SubComponents>
         </Container>

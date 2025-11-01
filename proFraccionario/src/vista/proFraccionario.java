@@ -1,4 +1,5 @@
-package profraccionario;
+package vista;
+import javax.swing.JOptionPane;
 import logica.*;
 /**
  *
@@ -34,14 +35,14 @@ public class proFraccionario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Fraccionaeio1 = new javax.swing.JPanel();
         numerador = new javax.swing.JLabel();
-        jtf1Num1 = new javax.swing.JTextField();
+        jtFNum1 = new javax.swing.JTextField();
         denominador = new javax.swing.JLabel();
-        jtf2Den2 = new javax.swing.JTextField();
+        jtFDen1 = new javax.swing.JTextField();
         Fraccionario2 = new javax.swing.JPanel();
         numerador2 = new javax.swing.JLabel();
         denominador2 = new javax.swing.JLabel();
-        jtf3Num2 = new javax.swing.JTextField();
-        jtf4Den2 = new javax.swing.JTextField();
+        jtFNum2 = new javax.swing.JTextField();
+        jtFDen2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         lbResultado = new javax.swing.JLabel();
         Acciones = new javax.swing.JPanel();
@@ -76,11 +77,11 @@ public class proFraccionario extends javax.swing.JFrame {
                     .addGroup(Fraccionaeio1Layout.createSequentialGroup()
                         .addComponent(numerador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtf1Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtFNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Fraccionaeio1Layout.createSequentialGroup()
                         .addComponent(denominador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtf2Den2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtFDen1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -90,11 +91,11 @@ public class proFraccionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Fraccionaeio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numerador)
-                    .addComponent(jtf1Num1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtFNum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(Fraccionaeio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(denominador)
-                    .addComponent(jtf2Den2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtFDen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -114,11 +115,11 @@ public class proFraccionario extends javax.swing.JFrame {
                     .addGroup(Fraccionario2Layout.createSequentialGroup()
                         .addComponent(numerador2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtf3Num2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtFNum2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Fraccionario2Layout.createSequentialGroup()
                         .addComponent(denominador2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(jtf4Den2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtFDen2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         Fraccionario2Layout.setVerticalGroup(
@@ -127,11 +128,11 @@ public class proFraccionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Fraccionario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numerador2)
-                    .addComponent(jtf3Num2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtFNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(Fraccionario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(denominador2)
-                    .addComponent(jtf4Den2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtFDen2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -291,10 +292,82 @@ public class proFraccionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean validarNumero(String parametro){
+        // Validar que el parámetro no esté vacío
+        if(parametro.isEmpty() || !parametro.matches("\\d+")){
+            //JOptionPane.showMessageDialog(this, "Ingrese un valor valido");
+            return false;
+        }
+        return true;
+        /**         
+        // Validar que el parametro solo contenga números
+        if(!parametro.matches("\\d+")){
+            JOptionPane.showMessageDialog(this, "Solo se permiten números.");
+            return false;
+        }
+        return true;
+        **/
+    }
+    
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
-        jtf1Num1.setText("hiii");
-        habilitarNoHabilitarOperaciones(true);
+        //boolean esNumero;
+        //esNumero = validarNumero(jtFNum1.getText());
+
+        /**
+        // Si pasa las validaciones, se puede asignar el valor al numerador
+        if(esNumero){
+            f1.setNumerador(Integer.parseInt(jtFNum1.getText()));
+            jtFNum1.setEnabled(false);
+        }else jtFNum1.setText(" ");
+                
+        if(validarNumero(jtFDen1.getText())) f1.setDenominador(Integer.parseInt(jtFDen1.getText()));
+        else jtFDen1.setText(" ");
+        
+        if(validarNumero(jtFNum1.getText()))f2.setNumerador(Integer.parseInt(jtFNum2.getText())); 
+        else jtFNum2.setText(" ");
+        
+        if(validarNumero(jtFDen2.getText()))f2.setDenominador(Integer.parseInt(jtFDen2.getText()));
+        else jtFDen2.setText(" ");
+        
+        lbResultado.setText(f1.toString());
+        **/  
+                
+        boolean validarCampos = true;
+        // 2. Revisamos CADA campo. Si UNO falla, la bandera cambia a false.
+        // Usamos "if", NO "while".
+        if (!validarNumero(jtFNum1.getText())) {
+            validarCampos = false;
+        }
+        if (!validarNumero(jtFDen1.getText())) {
+            validarCampos = false;
+        }
+        if (!validarNumero(jtFNum2.getText())) {
+            validarCampos = false;
+        }
+        if (!validarNumero(jtFDen2.getText())) {
+            validarCampos = false;
+        }
+        
+        if(!validarCampos){
+            JOptionPane.showMessageDialog(this, "POR FAVOR RELLENE TODOS LOS CAMPOS CON VALORES VALIDOS");
+            jtFNum1.setText(" ");
+            jtFNum2.setText(" ");
+            jtFDen1.setText(" ");
+            jtFDen2.setText(" ");
+        }
+        else {
+            f1.setNumerador(Integer.parseInt(jtFNum1.getText()));
+            jtFNum1.setEnabled(false);
+            f1.setDenominador(Integer.parseInt(jtFDen1.getText()));
+            jtFDen1.setEnabled(false);
+            
+            f2.setNumerador(Integer.parseInt(jtFNum2.getText()));
+            jtFNum2.setEnabled(false);
+            f2.setDenominador(Integer.parseInt(jtFDen2.getText()));
+            jtFDen2.setEnabled(false);
+            
+        }
     }//GEN-LAST:event_btnCrearActionPerformed
 
     public static void main(String args[]) {
@@ -332,10 +405,10 @@ public class proFraccionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jtf1Num1;
-    private javax.swing.JTextField jtf2Den2;
-    private javax.swing.JTextField jtf3Num2;
-    private javax.swing.JTextField jtf4Den2;
+    private javax.swing.JTextField jtFDen1;
+    private javax.swing.JTextField jtFDen2;
+    private javax.swing.JTextField jtFNum1;
+    private javax.swing.JTextField jtFNum2;
     private javax.swing.JLabel lbResultado;
     private javax.swing.JLabel numerador;
     private javax.swing.JLabel numerador2;
