@@ -13,13 +13,12 @@ public class OperaFraccionario {
     }
     public static Fraccionario sumar (Fraccionario f1, Fraccionario f2){
        Fraccionario suma = new Fraccionario ();
-       int num = f1.getNumerador() * f2.getDenominador()  + f1.getDenominador() * f2.getNumerador();
+       int num = f1.getNumerador() * f2.getDenominador() + f1.getDenominador() * f2.getNumerador();
      
-       
        int d= f1.getDenominador () * f2.getDenominador();
        suma.setNumerador(num);
        suma.setDenominador(d);
-        return suma;
+       return suma;
     }
     
     public static Fraccionario restar (Fraccionario f1, Fraccionario f2){
@@ -29,7 +28,7 @@ public class OperaFraccionario {
        int d= f1.getDenominador () * f2.getDenominador();
        resta.setNumerador(num);
        resta.setDenominador(d);
-        return resta;
+       return resta;
     }
     public static Fraccionario multiplicar (Fraccionario f1, Fraccionario f2){
        Fraccionario mult = new Fraccionario ();
@@ -50,4 +49,26 @@ public class OperaFraccionario {
        div.setDenominador(d); 
        return div;
    }
+
+   private static int calcularMCD(int n, int d) {
+        while (d != 0) {
+            int temp = d;
+            d = n % d;
+            n = temp;
+        }
+        return n;
+    }
+
+    // Función para simplificar la fracción
+    public static Fraccionario simplificar(Fraccionario f1){
+        int mcd = calcularMCD(f1.getNumerador(), f1.getDenominador());
+        f1.setNumerador(f1.getNumerador()/mcd);
+        f1.setDenominador(f1.getDenominador()/mcd);
+        return f1;
+    }
+    
+    public static double decimal(Fraccionario f1){
+        double dicimal = f1.getNumerador()/f1.getDenominador();
+        return dicimal;
+    }
 }

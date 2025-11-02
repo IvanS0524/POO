@@ -152,8 +152,18 @@ public class proFraccionario extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AccionesLayout = new javax.swing.GroupLayout(Acciones);
         Acciones.setLayout(AccionesLayout);
@@ -185,16 +195,46 @@ public class proFraccionario extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
 
         btnRestar.setText("Restar");
+        btnRestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestarActionPerformed(evt);
+            }
+        });
 
         btnSumar.setText("Sumar");
+        btnSumar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSumarActionPerformed(evt);
+            }
+        });
 
         btnMultiplicar.setText("Multiplicar");
+        btnMultiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiplicarActionPerformed(evt);
+            }
+        });
 
         btnDividir.setText("Dividir");
+        btnDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirActionPerformed(evt);
+            }
+        });
 
         btnDecimal.setText("Decimal");
+        btnDecimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDecimalActionPerformed(evt);
+            }
+        });
 
         btnSimplificar.setText("Simplificar");
+        btnSimplificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimplificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -351,10 +391,11 @@ public class proFraccionario extends javax.swing.JFrame {
         
         if(!validarCampos){
             JOptionPane.showMessageDialog(this, "POR FAVOR RELLENE TODOS LOS CAMPOS CON VALORES VALIDOS");
-            jtFNum1.setText(" ");
-            jtFNum2.setText(" ");
-            jtFDen1.setText(" ");
-            jtFDen2.setText(" ");
+            // Limpiar campos inválidos (usar cadena vacía en lugar de espacio)
+            jtFNum1.setText("");
+            jtFNum2.setText("");
+            jtFDen1.setText("");
+            jtFDen2.setText("");
         }
         else {
             f1.setNumerador(Integer.parseInt(jtFNum1.getText()));
@@ -366,9 +407,72 @@ public class proFraccionario extends javax.swing.JFrame {
             jtFNum2.setEnabled(false);
             f2.setDenominador(Integer.parseInt(jtFDen2.getText()));
             jtFDen2.setEnabled(false);
+            // Habilitar botones de operaciones y acciones tras crear correctamente
+            habilitarNoHabilitarOperaciones(true);
+            btnEditar.setEnabled(true);
+            btnLimpiar.setEnabled(true);
+            // Opcional: deshabilitar Crear para evitar crear de nuevo sin editar
+            btnCrear.setEnabled(false);
             
         }
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        jtFNum1.setText("");
+        jtFNum2.setText("");
+        jtFDen1.setText("");
+        jtFDen2.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        jtFNum1.setEnabled(true);
+        jtFDen1.setEnabled(true);
+        jtFNum2.setEnabled(true);
+        jtFDen2.setEnabled(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumarActionPerformed
+        // TODO add your handling code here:
+        r = OperaFraccionario.sumar(f1, f2);
+        lbResultado.setText(r.toString());
+    }//GEN-LAST:event_btnSumarActionPerformed
+
+    private void btnMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicarActionPerformed
+        // TODO add your handling code here:
+        r = OperaFraccionario.multiplicar(f1, f2);
+        lbResultado.setText(r.toString());
+    }//GEN-LAST:event_btnMultiplicarActionPerformed
+
+    private void btnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDecimalActionPerformed
+        // TODO add your handling code here:
+        if (r == null) {
+            lbResultado.setText("No hay resultado disponible");
+            return;
+        }
+        double decimal = OperaFraccionario.decimal(r);
+        // Conversión simple a String:
+        lbResultado.setText(String.valueOf(decimal));
+    }//GEN-LAST:event_btnDecimalActionPerformed
+
+    private void btnRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarActionPerformed
+        // TODO add your handling code here:
+        r = OperaFraccionario.restar(f1, f2);
+        lbResultado.setText(r.toString());
+    }//GEN-LAST:event_btnRestarActionPerformed
+
+    private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirActionPerformed
+        // TODO add your handling code here:
+        r = OperaFraccionario.dividir(f1, f2);
+        lbResultado.setText(r.toString());
+    }//GEN-LAST:event_btnDividirActionPerformed
+
+    private void btnSimplificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimplificarActionPerformed
+        // TODO add your handling code here:
+        r = OperaFraccionario.simplificar(f1);
+        lbResultado.setText(r.toString());
+    }//GEN-LAST:event_btnSimplificarActionPerformed
 
     public static void main(String args[]) {
         try {
