@@ -12,9 +12,10 @@ public class proFraccionario extends javax.swing.JFrame {
     public proFraccionario() {
         initComponents();
         
-        f1= new Fraccionario();
-        f2 = new Fraccionario();
-        r = new Fraccionario();
+    f1= new Fraccionario();
+    f2 = new Fraccionario();
+    // No hay resultado al iniciar; usar null para poder mostrar mensajes
+    r = null;
         
         habilitarNoHabilitarOperaciones(false);
         btnEditar.setEnabled(false);
@@ -375,7 +376,6 @@ public class proFraccionario extends javax.swing.JFrame {
                 
         boolean validarCampos = true;
         // 2. Revisamos CADA campo. Si UNO falla, la bandera cambia a false.
-        // Usamos "if", NO "while".
         if (!validarNumero(jtFNum1.getText())) {
             validarCampos = false;
         }
@@ -391,7 +391,7 @@ public class proFraccionario extends javax.swing.JFrame {
         
         if(!validarCampos){
             JOptionPane.showMessageDialog(this, "POR FAVOR RELLENE TODOS LOS CAMPOS CON VALORES VALIDOS");
-            // Limpiar campos inválidos (usar cadena vacía en lugar de espacio)
+            // Limpiar campos inválidos
             jtFNum1.setText("");
             jtFNum2.setText("");
             jtFDen1.setText("");
@@ -423,14 +423,35 @@ public class proFraccionario extends javax.swing.JFrame {
         jtFNum2.setText("");
         jtFDen1.setText("");
         jtFDen2.setText("");
+        jtFNum1.setEnabled(true);
+        jtFNum2.setEnabled(true);
+        jtFDen1.setEnabled(true);
+        jtFDen2.setEnabled(true);
+        // Resetear resultado y etiqueta
+        r = null;
+        lbResultado.setText("0.0");
+        // Permitir crear nuevamente si estaba deshabilitado
+        btnCrear.setEnabled(true);
+        r = null;
+        habilitarNoHabilitarOperaciones(false);
+        btnEditar.setEnabled(false);
+        btnLimpiar.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+        
         jtFNum1.setEnabled(true);
         jtFDen1.setEnabled(true);
         jtFNum2.setEnabled(true);
         jtFDen2.setEnabled(true);
+        
+        // Al editar, invalida el resultado previo
+        r = null;
+        lbResultado.setText("0.0");
+        habilitarNoHabilitarOperaciones(false);
+        btnCrear.setEnabled(true);
+        btnEditar.setEnabled(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumarActionPerformed
@@ -470,7 +491,11 @@ public class proFraccionario extends javax.swing.JFrame {
 
     private void btnSimplificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimplificarActionPerformed
         // TODO add your handling code here:
-        r = OperaFraccionario.simplificar(f1);
+        if (r == null) {
+            lbResultado.setText("No hay resultado para simplificar");
+            return;
+        }
+        r = OperaFraccionario.simplificar(r);
         lbResultado.setText(r.toString());
     }//GEN-LAST:event_btnSimplificarActionPerformed
 

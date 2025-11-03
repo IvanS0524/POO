@@ -13,8 +13,6 @@ public class Fraccionario {
     private int denominador;
     
     public Fraccionario() {
-        this.numerador = 1;
-        this.denominador = 1;
      
     }
 

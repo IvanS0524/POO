@@ -68,7 +68,7 @@ public class OperaFraccionario {
     }
     
     public static double decimal(Fraccionario f1){
-        double dicimal = f1.getNumerador()/f1.getDenominador();
+        double dicimal = (double) f1.getNumerador()/f1.getDenominador();
         return dicimal;
     }
 }
