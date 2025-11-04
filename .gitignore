@@ -43,3 +43,4 @@ bin/
 *.xml
 *.mf
 /proBiblioteca/build/
+/proEmpresa/build/
