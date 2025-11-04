@@ -432,7 +432,6 @@ public class proFraccionario extends javax.swing.JFrame {
         lbResultado.setText("0.0");
         // Permitir crear nuevamente si estaba deshabilitado
         btnCrear.setEnabled(true);
-        r = null;
         habilitarNoHabilitarOperaciones(false);
         btnEditar.setEnabled(false);
         btnLimpiar.setEnabled(false);

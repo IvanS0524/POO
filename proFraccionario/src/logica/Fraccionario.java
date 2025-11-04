@@ -36,11 +36,15 @@ public class Fraccionario {
         return denominador;
     }
 
-    public void setDenominador(int denominador) 
-    {
-        this.denominador = denominador;
+    public void setDenominador(int denominador){
+        if(denominador==0){
+            System.out.println("No se puede dividir entre cero");
+        }
+        else{
+            this.denominador = denominador;
+        }
     }
-
+    
     @Override
     public String toString() 
     {
