@@ -12,10 +12,10 @@ public class proFraccionario extends javax.swing.JFrame {
     public proFraccionario() {
         initComponents();
         
-    f1= new Fraccionario();
-    f2 = new Fraccionario();
-    // No hay resultado al iniciar; usar null para poder mostrar mensajes
-    r = null;
+        f1 = new Fraccionario();
+        f2 = new Fraccionario();//null ambas
+        // No hay resultado al iniciar; usar null para poder mostrar mensajes
+        r = null;
         
         habilitarNoHabilitarOperaciones(false);
         btnEditar.setEnabled(false);
@@ -335,7 +335,7 @@ public class proFraccionario extends javax.swing.JFrame {
 
     private boolean validarNumero(String parametro){
         // Validar que el parámetro no esté vacío
-        if(parametro.isEmpty() || !parametro.matches("\\d+")){
+        if(parametro.isEmpty() || !parametro.matches("-?\\d+")){
             //JOptionPane.showMessageDialog(this, "Ingrese un valor valido");
             return false;
         }
@@ -379,10 +379,10 @@ public class proFraccionario extends javax.swing.JFrame {
         if (!validarNumero(jtFNum1.getText())) {
             validarCampos = false;
         }
-        if (!validarNumero(jtFDen1.getText())) {
+        if (!validarNumero(jtFNum2.getText())) {
             validarCampos = false;
         }
-        if (!validarNumero(jtFNum2.getText())) {
+        if (!validarNumero(jtFDen1.getText())) {
             validarCampos = false;
         }
         if (!validarNumero(jtFDen2.getText())) {
@@ -402,6 +402,7 @@ public class proFraccionario extends javax.swing.JFrame {
             jtFNum1.setEnabled(false);
             f1.setDenominador(Integer.parseInt(jtFDen1.getText()));
             jtFDen1.setEnabled(false);
+            
             
             f2.setNumerador(Integer.parseInt(jtFNum2.getText()));
             jtFNum2.setEnabled(false);

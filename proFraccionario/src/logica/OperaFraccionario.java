@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logica;
 
 /**
@@ -12,41 +8,45 @@ public class OperaFraccionario {
     public static void OperaFraccionario (){    
     }
     public static Fraccionario sumar (Fraccionario f1, Fraccionario f2){
-       Fraccionario suma = new Fraccionario ();
+       //Fraccionario suma = new Fraccionario ();
        int num = f1.getNumerador() * f2.getDenominador() + f1.getDenominador() * f2.getNumerador();
      
        int d= f1.getDenominador () * f2.getDenominador();
-       suma.setNumerador(num);
-       suma.setDenominador(d);
+       //suma.setNumerador(num);
+       //suma.setDenominador(d);
+       Fraccionario suma = new Fraccionario (num, d);
        return suma;
     }
     
     public static Fraccionario restar (Fraccionario f1, Fraccionario f2){
-       Fraccionario resta = new Fraccionario ();
+       //Fraccionario resta = new Fraccionario ();
        int num = f1.getNumerador() * f2.getDenominador()  - f1.getDenominador() * f2.getNumerador();
        
        int d= f1.getDenominador () * f2.getDenominador();
-       resta.setNumerador(num);
-       resta.setDenominador(d);
+       //resta.setNumerador(num);
+       //resta.setDenominador(d);
+       Fraccionario resta = new Fraccionario (num, d);
        return resta;
     }
     public static Fraccionario multiplicar (Fraccionario f1, Fraccionario f2){
-       Fraccionario mult = new Fraccionario ();
+       //Fraccionario mult = new Fraccionario ();
        int num= f1.getNumerador() * f2.getNumerador ();
        int d= f1.getDenominador() * f2.getDenominador ();
        
-       mult.setNumerador(num);
-       mult.setDenominador(d); 
+       //mult.setNumerador(num);
+       //mult.setDenominador(d); 
+       Fraccionario mult = new Fraccionario (num, d);
        return mult;
     }
    
     public static Fraccionario dividir (Fraccionario f1, Fraccionario f2){
-       Fraccionario div = new Fraccionario ();
+       //Fraccionario div = new Fraccionario ();
        int num= f1.getNumerador() * f2.getDenominador ();
        int d= f1.getDenominador() * f2.getNumerador ();
        
-       div.setNumerador(num);
-       div.setDenominador(d); 
+       //div.setNumerador(num);
+       //div.setDenominador(d);
+       Fraccionario div = new Fraccionario (num, d);
        return div;
    }
 
