@@ -333,15 +333,31 @@ public class proFraccionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean validarDenominador(String p){
+        int den = Integer.parseInt(p);
+        
+        if(den==0){
+            return false;
+        }
+        return true;
+    }
+    
     private boolean validarNumero(String parametro){
         // Validar que el parámetro no esté vacío
         if(parametro.isEmpty() || !parametro.matches("-?\\d+")){
             //JOptionPane.showMessageDialog(this, "Ingrese un valor valido");
             return false;
         }
+        //return true;
+        
+        if(!validarDenominador(parametro)){
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE DIVIDIR ENTRE CERO");
+            return false; 
+        }
         return true;
         /**         
         // Validar que el parametro solo contenga números
+        * cadena en rejects
         if(!parametro.matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Solo se permiten números.");
             return false;
@@ -354,7 +370,7 @@ public class proFraccionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         //boolean esNumero;
         //esNumero = validarNumero(jtFNum1.getText());
-
+        
         /**
         // Si pasa las validaciones, se puede asignar el valor al numerador
         if(esNumero){
@@ -375,7 +391,7 @@ public class proFraccionario extends javax.swing.JFrame {
         **/  
                 
         boolean validarCampos = true;
-        // 2. Revisamos CADA campo. Si UNO falla, la bandera cambia a false.
+        // Revisars cada campo. Si 1 falla la bandera cambia a false.
         if (!validarNumero(jtFNum1.getText())) {
             validarCampos = false;
         }
