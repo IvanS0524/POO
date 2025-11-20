@@ -345,50 +345,18 @@ public class proFraccionario extends javax.swing.JFrame {
     private boolean validarNumero(String parametro){
         // Validar que el parámetro no esté vacío
         if(parametro.isEmpty() || !parametro.matches("-?\\d+")){
-            //JOptionPane.showMessageDialog(this, "Ingrese un valor valido");
             return false;
         }
-        //return true;
         
         if(!validarDenominador(parametro)){
             JOptionPane.showMessageDialog(null, "NO SE PUEDE DIVIDIR ENTRE CERO");
             return false; 
         }
         return true;
-        /**         
-        // Validar que el parametro solo contenga números
-        * cadena en rejects
-        if(!parametro.matches("\\d+")){
-            JOptionPane.showMessageDialog(this, "Solo se permiten números.");
-            return false;
-        }
-        return true;
-        **/
     }
     
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        // TODO add your handling code here:
-        //boolean esNumero;
-        //esNumero = validarNumero(jtFNum1.getText());
-        
-        /**
-        // Si pasa las validaciones, se puede asignar el valor al numerador
-        if(esNumero){
-            f1.setNumerador(Integer.parseInt(jtFNum1.getText()));
-            jtFNum1.setEnabled(false);
-        }else jtFNum1.setText(" ");
-                
-        if(validarNumero(jtFDen1.getText())) f1.setDenominador(Integer.parseInt(jtFDen1.getText()));
-        else jtFDen1.setText(" ");
-        
-        if(validarNumero(jtFNum1.getText()))f2.setNumerador(Integer.parseInt(jtFNum2.getText())); 
-        else jtFNum2.setText(" ");
-        
-        if(validarNumero(jtFDen2.getText()))f2.setDenominador(Integer.parseInt(jtFDen2.getText()));
-        else jtFDen2.setText(" ");
-        
-        lbResultado.setText(f1.toString());
-        **/  
+        // TODO add your handling code here: 
                 
         boolean validarCampos = true;
         // Revisars cada campo. Si 1 falla la bandera cambia a false.
