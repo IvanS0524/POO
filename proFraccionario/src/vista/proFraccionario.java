@@ -11,6 +11,7 @@ public class proFraccionario extends javax.swing.JFrame {
 
     public proFraccionario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         f1 = new Fraccionario();
         f2 = new Fraccionario();//null ambas
@@ -344,13 +345,8 @@ public class proFraccionario extends javax.swing.JFrame {
     
     private boolean validarNumero(String parametro){
         // Validar que el parámetro no esté vacío
-        if(parametro.isEmpty() || !parametro.matches("-?\\d+")){
+        if(parametro.trim().isEmpty() || !parametro.trim().matches("-?\\d+")){
             return false;
-        }
-        
-        if(!validarDenominador(parametro)){
-            JOptionPane.showMessageDialog(null, "NO SE PUEDE DIVIDIR ENTRE CERO");
-            return false; 
         }
         return true;
     }
@@ -380,17 +376,27 @@ public class proFraccionario extends javax.swing.JFrame {
             jtFNum2.setText("");
             jtFDen1.setText("");
             jtFDen2.setText("");
+            return;
         }
-        else {
-            f1.setNumerador(Integer.parseInt(jtFNum1.getText()));
+        
+        int n1 = Integer.parseInt(jtFNum1.getText().trim());
+        int d1 = Integer.parseInt(jtFDen1.getText().trim());
+        int n2 = Integer.parseInt(jtFNum2.getText().trim());
+        int d2 = Integer.parseInt(jtFDen2.getText().trim());
+        
+        if(d1==0 || d2== 0){
+            JOptionPane.showMessageDialog(this, "NO SE PUEDE DIVIDIR ENTRE CERO");
+            return;
+        }
+            
+            f1.setNumerador(Integer.parseInt(jtFNum1.getText().trim()));
             jtFNum1.setEnabled(false);
-            f1.setDenominador(Integer.parseInt(jtFDen1.getText()));
-            jtFDen1.setEnabled(false);
+            f1.setDenominador(Integer.parseInt(jtFDen1.getText().trim()));
+            jtFDen1.setEnabled(false);  
             
-            
-            f2.setNumerador(Integer.parseInt(jtFNum2.getText()));
+            f2.setNumerador(Integer.parseInt(jtFNum2.getText().trim()));
             jtFNum2.setEnabled(false);
-            f2.setDenominador(Integer.parseInt(jtFDen2.getText()));
+            f2.setDenominador(Integer.parseInt(jtFDen2.getText().trim()));
             jtFDen2.setEnabled(false);
             // Habilitar botones de operaciones y acciones tras crear correctamente
             habilitarNoHabilitarOperaciones(true);
@@ -399,7 +405,6 @@ public class proFraccionario extends javax.swing.JFrame {
             // Opcional: deshabilitar Crear para evitar crear de nuevo sin editar
             btnCrear.setEnabled(false);
             
-        }
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
